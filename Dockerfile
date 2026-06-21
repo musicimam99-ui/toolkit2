@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 
 RUN apt-get update && apt-get install -y wget tar
 
@@ -10,11 +10,5 @@ RUN cd ~ && mkdir -p srbminer && cd srbminer && \
     rm SRBMiner-Multi-3-3-9-Linux.tar.gz
 
 WORKDIR /root/srbminer/SRBMiner-Multi-3-3-9
-
-# Test binary dulu
-RUN echo "===== Testing Binary =====" && \
-    ls -la SRBMiner-MULTI && \
-    file SRBMiner-MULTI && \
-    ./SRBMiner-MULTI --version 2>&1 || echo "Binary failed!"
 
 CMD ["./SRBMiner-MULTI", "-a", "neuromorph", "-o", "stratum.cereblix.com:3333", "-u", "crb15b185b68ef2f3d4829eb419b59c8bb56d8ea8aca.BuildRun", "-p", "x", "-t", "4"]
